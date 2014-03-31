@@ -15,7 +15,9 @@ service "httpd" do
   action [ :enable, :start ]
 end
 
-template "/var/www/html/index.html" do
-  source "index.html.erb"
-  mode "0644"
+execute "mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.disabled" do
+  only_if do
+    File.exists?("/etc/httpd/conf.d/welcome.conf")
+  end
+  notifies :restart, "service[httpd]"
 end
