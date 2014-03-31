@@ -1,0 +1,12 @@
+{
+  "name": "webserver",
+  "default_attributes": {
+    "apache": {
+      "greeting": "#ChefConf2014"
+    }
+  },
+  "run_list": [
+    "recipe[apache]",
+    "recipe[apache::vhosts]"
+  ]
+}
