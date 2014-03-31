@@ -11,5 +11,6 @@ platforms:
 suites:
   - name: default
     run_list:
-      recipe[apache]
+      - recipe[apache]
+      - recipe[apache::vhosts]
     attributes:
